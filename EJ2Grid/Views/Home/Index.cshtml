@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<ejs-grid id="Grid" allowPaging="true">
+    <e-data-manager url="/Home/UrlDataSource" adaptor="UrlAdaptor"></e-data-manager>
+    <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+    <e-grid-columns>
+        <e-grid-column field="OrderID" headerText="Order ID" isPrimaryKey="true" validationRules="@(new { required= true })" textAlign="Right" width="100"></e-grid-column>
+        <e-grid-column field="EmployeeID" headerText="Name" width="120" foreignKeyField="EmployeeID" foreignKeyValue="FirstName" dataSource="ViewBag.employee"></e-grid-column>
+        <e-grid-column field="CustomerID" headerText="Customer ID" type="string" width="120"></e-grid-column>
+        <e-grid-column field="CityID" headerText="City ID" foreignKeyField="EmpDetails.CityID" dataSource="ViewBag.employee" foreignKeyValue="EmpDetails.EmployeeDesignation"></e-grid-column>
+        <e-grid-column field="Freight" headerText="Freight" textAlign="Right" format="C2" editType="numericedit" width="120"></e-grid-column>
+        <e-grid-column field="ShipCity" headerText="Ship City" width="150"></e-grid-column>
+    </e-grid-columns>
+</ejs-grid>
